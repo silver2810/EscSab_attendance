@@ -1,75 +1,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Formulario de Asistencia</title>
+  <title>Registro Escuela Sabática Iglesia Galilea</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
-    h2 { text-align: center; color: #333; }
-    form { max-width: 400px; margin: auto; background: #fff; padding: 20px;
+	
+	/* Container to center form and logo */
+    .form-container { max-width: 400px; margin: auto; }
+    
+    /* 2. Logo styling */
+    .logo { display: block; margin: 0 auto 15px auto; max-width: 120px; height: auto; }
+	
+	h2 { text-align: center; color: #333; margin-top: 0; }
+    form { background: #fff; padding: 20px;
            border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
     label { display: block; margin-top: 10px; font-weight: bold; }
     input, select { width: 100%; padding: 8px; margin-top: 5px;
-                    border: 1px solid #ccc; border-radius: 4px; }
+                    border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
     button { margin-top: 20px; width: 100%; padding: 10px;
              background: #4CAF50; color: white; border: none;
-             border-radius: 4px; font-size: 16px; }
+             border-radius: 4px; font-size: 16px; cursor: pointer; }
     button:hover { background: #45a049; }
   </style>
 </head>
 <body>
-  <h2>Formulario de Asistencia</h2>
-  <form method="POST" action="/submit">
-    <label for="nombre">Nombre</label>
-    <input type="text" id="nombre" name="nombre" required>
+  <div class="form-container">
+     <!-- 3. Logo placement above the title and form -->
+     <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo Iglesia Galilea" class="logo">
+ 
+     <form method="POST" action="/submit">
+	    <h2>Registro Escuela Sabática "Galilea"</h2>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
 
-    <label for="apellido">Apellido</label>
-    <input type="text" id="apellido" name="apellido" required>
+		<input type="text" id="apellido" name="apellido" required>
+		<label for="apellido">Apellido</label>
 
-    <label for="fecha_nacimiento">Fecha de nacimiento</label>
-    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+		<label for="fecha_nacimiento">Fecha de nacimiento</label>
+		<input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
 
-    <label for="telefono">Teléfono</label>
-    <input type="tel" id="telefono" name="telefono">
+		<label for="telefono">Teléfono</label>
+		<input type="tel" id="telefono" name="telefono">
 
-    <label for="tipo_miembro">Tipo de asistente</label>
-    <select id="tipo_miembro" name="tipo_miembro">
-      <option value="Miembro activo">Miembro activo</option>
-      <option value="Visita regular">Visita regular</option>
-      <option value="Otro">Otro</option>
-    </select>
+		<label for="tipo_miembro">Tipo de asistente</label>
+		<select id="tipo_miembro" name="tipo_miembro">
+		  <option value="Miembro activo">Miembro activo</option>
+		  <option value="Visita regular">Visita regular</option>
+		  <option value="Otro">Otro</option>
+		</select>
 
-    <label for="categoria">Categoría</label>
-    <select id="categoria" name="categoria">
-      <option value="Universitario">Universitario</option>
-      <option value="Niño">Niño</option>
-      <option value="Adolescente">Adolescente</option>
-      <option value="Otro">Otro</option>
-    </select>
+		<label for="categoria">Categoría</label>
+		<select id="categoria" name="categoria">
+		  <option value="Universitario">Universitario</option>
+		  <option value="Niño">Niño</option>
+		  <option value="Adolescente">Adolescente</option>
+		  <option value="Otro">Otro</option>
+		</select>
 
-    <label for="procedencia">Procedencia</label>
-    <select id="procedencia" name="procedencia">
-      <option value="Local">Local</option>
-      <option value="Foráneo">Foráneo</option>
-     </select>
+		<label for="procedencia">Procedencia</label>
+		<select id="procedencia" name="procedencia">
+		  <option value="Local">Local</option>
+		  <option value="Foráneo">Foráneo</option>
+		 </select>
 
-    <label for="Clase">Clase</label>
-    <select id="clase" name="clase">
-      <option value="Cuna">Cuna</option>
-      <option value="Infantes">Infantes</option>
-      <option value="Adolescentes">Adolescentes</option>
-      <option value="Sin Clase">Sin Clase</option>
-      <option value="Clase 1">Clase 1</option>
-      <option value="Clase 2">Clase 2</option>
-      <option value="Clase 3">Clase 3</option>
-      <option value="Clase 4">Clase 4</option>
-      <option value="Clase 5">Clase 5</option>
-      <option value="Clase 6">Clase 6</option>
-      <option value="Clase 7">Clase 7</option>
-      <option value="Clase 8">Clase 8</option>
-      <option value="Visita">Visita</option>	  
-     </select>
+		<label for="Clase">Clase</label>
+		<select id="clase" name="clase">
+		  <option value="Cuna">Cuna</option>
+		  <option value="Infantes">Infantes</option>
+		  <option value="Adolescentes">Adolescentes</option>
+		  <option value="Sin Clase">Sin Clase</option>
+		  <option value="Clase 1">Clase 1</option>
+		  <option value="Clase 2">Clase 2</option>
+		  <option value="Clase 3">Clase 3</option>
+		  <option value="Clase 4">Clase 4</option>
+		  <option value="Clase 5">Clase 5</option>
+		  <option value="Clase 6">Clase 6</option>
+		  <option value="Clase 7">Clase 7</option>
+		  <option value="Clase 8">Clase 8</option>
+		  <option value="Visita">Visita</option>	  
+		 </select>
 	 
-    <button type="submit">Enviar</button>
-  </form>
+        <button type="submit">Enviar</button>
+    </form>
 </body>
 </html>

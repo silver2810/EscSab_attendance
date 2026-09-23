@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 import gspread
 from dotenv import load_dotenv
 import json, os
@@ -40,10 +40,11 @@ def submit():
     tipo_miembro = request.form.get("tipo_miembro")
     categoria = request.form.get("categoria")
     procedencia = request.form.get("procedencia")
+    clase = request.form.get("clase")
 
     # Append all collected data into Google Sheets
     sheet.append_row([nombre, apellido, fecha_nacimiento, telefono,
-                      tipo_miembro, categoria, procedencia])
+                      tipo_miembro, categoria, procedencia, clase])
 
     return "✅ ¡Gracias! Tu asistencia ha sido registrada."
 
