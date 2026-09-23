@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulario de Asistencia</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
+    h2 { text-align: center; color: #333; }
+    form { max-width: 400px; margin: auto; background: #fff; padding: 20px;
+           border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, select { width: 100%; padding: 8px; margin-top: 5px;
+                    border: 1px solid #ccc; border-radius: 4px; }
+    button { margin-top: 20px; width: 100%; padding: 10px;
+             background: #4CAF50; color: white; border: none;
+             border-radius: 4px; font-size: 16px; }
+    button:hover { background: #45a049; }
+  </style>
+</head>
+<body>
+  <h2>Formulario de Asistencia</h2>
+  <form method="POST" action="/submit">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="apellido">Apellido</label>
+    <input type="text" id="apellido" name="apellido" required>
+
+    <label for="fecha_nacimiento">Fecha de nacimiento</label>
+    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+
+    <label for="telefono">Teléfono</label>
+    <input type="tel" id="telefono" name="telefono">
+
+    <label for="tipo_miembro">Tipo de asistente</label>
+    <select id="tipo_miembro" name="tipo_miembro">
+      <option value="Miembro activo">Miembro activo</option>
+      <option value="Visita regular">Visita regular</option>
+      <option value="Otro">Otro</option>
+    </select>
+
+    <label for="categoria">Categoría</label>
+    <select id="categoria" name="categoria">
+      <option value="Estudiante">Estudiante</option>
+      <option value="Otro">Otro</option>
+    </select>
+
+    <label for="procedencia">Procedencia</label>
+    <select id="procedencia" name="procedencia">
+      <option value="Local">Local</option>
+      <option value="Foráneo">Foráneo</option>
+      <option value="Otro">Otro</option>
+    </select>
+
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>

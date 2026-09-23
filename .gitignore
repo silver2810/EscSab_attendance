@@ -1,0 +1,6 @@
+service_account_attendance_escsab.json
+.env
+make_env.py
+debugging_attendance_app.ipynb
+__pycache__/, *.pyc
+.ipynb_checkpoints
