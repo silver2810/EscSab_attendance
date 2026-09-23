@@ -46,7 +46,7 @@ def submit():
     sheet.append_row([nombre, apellido, fecha_nacimiento, telefono,
                       tipo_miembro, categoria, procedencia, clase])
 
-    return "✅ ¡Gracias! Tu asistencia ha sido registrada."
+    return render_template("success.html")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
