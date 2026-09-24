@@ -28,17 +28,33 @@
             max-width: 400px;
             width: 100%;
         }
-        .card h2 {
+        .card h3 {
             color: #2e7d32;
             font-size: 1.35rem;
             font-weight: 600;
             line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+        .card p {
+            color: #333333;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        .card strong {
+            color: #1b5e20;
+            font-size: 1.2rem;
+            background: #e8f5e9;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>✅ ¡Eres parte de la Familia Galilea!</h2>
+        <h3>¡Registro Exitoso!</h3>
+        <p>Tu código de asistencia es: <strong>{{ attendee_id }}</strong></p>
+        <p>Por favor guárdalo para registrar tu asistencia en las reuniones.</p>
     </div>
 </body>
 </html>

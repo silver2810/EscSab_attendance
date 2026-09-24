@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, url_for
 import gspread
 from dotenv import load_dotenv
-import json, os
+import json, os, uuid
 from google.oauth2.service_account import Credentials
 
 load_dotenv() # loads variables from .env
@@ -11,9 +11,6 @@ scope = ["https://spreadsheets.google.com/feeds",
 
 # Load the string from your environment
 creds_env_string = os.environ['GOOGLE_CREDENTIALS']
-
-# Remove carriage returns and literal newlines
-#creds_env_string = ''.join(ch for ch in creds_env_string if ord(ch) >= 32 or ch in ['\\', '"'])
 
 # Parse it into a dictionary
 creds_dict = json.loads(creds_env_string)
@@ -42,11 +39,13 @@ def submit():
     procedencia = request.form.get("procedencia")
     clase = request.form.get("clase")
 
+# Generates an ID like "ESG-A1B2C3" (shortened uppercase UUID)
+    attendee_id = f"ESG-{uuid.uuid4().hex[:6].upper()}"
     # Append all collected data into Google Sheets
-    sheet.append_row([nombre, apellido, fecha_nacimiento, telefono,
+    sheet.append_row([attendee_id, nombre, apellido, fecha_nacimiento, telefono,
                       tipo_miembro, categoria, procedencia, clase])
 
-    return render_template("success.html")
+    return render_template("success.html", attendee_id=attendee_id)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
