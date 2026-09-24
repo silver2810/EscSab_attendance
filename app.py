@@ -39,8 +39,16 @@ def submit():
     procedencia = request.form.get("procedencia")
     clase = request.form.get("clase")
 
-# Generates an ID like "ESG-A1B2C3" (shortened uppercase UUID)
-    attendee_id = f"ESG-{uuid.uuid4().hex[:6].upper()}"
+    # 1. Extract first 2 letters of name and surname (uppercase)
+    code_nombre = nombre[:2].upper() if len(nombre) >= 2 else nombre.upper().ljust(2, 'X')
+    code_apellido = apellido[:2].upper() if len(apellido) >= 2 else apellido.upper().ljust(2, 'X')
+
+    # 2. Extract birth year (assumes input type="date" returning YYYY-MM-DD)
+    birth_year = fecha_nacimiento.split("-")[0] if "-" in fecha_nacimiento else fecha_nacimiento[-4:]
+
+    # 3. Concatenate custom ID (e.g., JUAN PEREZ 1995 -> JUPE1995)
+    attendee_id = f"{code_nombre}{code_apellido}{birth_year}"
+         
     # Append all collected data into Google Sheets
     sheet.append_row([attendee_id, nombre, apellido, fecha_nacimiento, telefono,
                       tipo_miembro, categoria, procedencia, clase])
